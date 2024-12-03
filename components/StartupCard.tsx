@@ -52,8 +52,8 @@ export default function StartupCard({ post }: { post: StartupCardType }) {
 				{/* Author prfile image */}
 				<Link href={`/user/${author?._id}`}>
 					<Image
-						src={author?.image!}
-						alt={author?.name!}
+						src={author?.image || "/user.png"}
+						alt={author?.name || "User"}
 						width={48}
 						height={48}
 						className="rounded-full"
