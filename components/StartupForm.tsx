@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { formSchema } from "@/lib/validation";
 import { createPitch } from "@/lib/actions";
 import { useActionState, useState } from "react";
+import { FormState } from "sanity";
 
 
 const StartupForm = () => {
@@ -20,7 +21,7 @@ const StartupForm = () => {
 	const router = useRouter();
 
 	// Function to handle form submission
-	const handleFormSubmit = async (prevState: any, formData: FormData) => {
+	const handleFormSubmit = async (prevState: FormState, formData: FormData) => {
 		try {
 			// Extract form field values
 			const formValues = {
@@ -35,7 +36,7 @@ const StartupForm = () => {
 			await formSchema.parseAsync(formValues);
 
 			// Call API to create a pitch
-			const result = await createPitch(prevState, formData, pitch);
+			const result = await createPitch(formData, pitch);
 
 			// Changed from === to ==
 			//  successful submission
@@ -83,7 +84,7 @@ const StartupForm = () => {
 	};
 
 	// Hook to manage form state and submission lifecycle
-	const [state, formAction, isPending] = useActionState(handleFormSubmit, {
+	const [, formAction, isPending] = useActionState(handleFormSubmit, {
 		error: "",
 		status: "INITIAL",
 	});
