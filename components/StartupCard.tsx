@@ -63,8 +63,16 @@ export default function StartupCard({ post }: { post: StartupCardType }) {
 
 			{/* Description and Image of startup */}
 			<Link href={`/startup/${_id}`}>
-				<p className="startup-card_desc">{description}</p>
-				<img src={image} alt="image" className="startup-card_img" />
+				<p className="startup-card_desc">
+					{description}
+				</p>
+				<Image
+					src={image}
+					alt="image"
+					width={400}
+					height={400}
+					className="startup-card_img"
+				/>
 			</Link>
 
 			{/* Category and Detail button */}
