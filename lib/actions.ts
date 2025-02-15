@@ -6,7 +6,6 @@ import { writeClient } from "@/sanity/lib/write-client";
 import { parseServerActionResponse } from "./utils";
 
 export const createPitch = async (
-	state: any, // Current state of the app (used for error/status tracking)
 	form: FormData, // Form data containing pitch details
 	pitch: string // The pitch text provided by the user
 ) => {
